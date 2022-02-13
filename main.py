@@ -9,7 +9,7 @@ def main():
         bot.select_city(city)
         bot.select_state(input(f'What state of {city} you want to choose? '))
         bot.select_price(start_price=int(
-            input("What is start price ?")), end_price=int(input("What is end price? ")))
+            input("What is start price? ")), end_price=int(input("What is end price? ")))
         bot.refresh()
         bot.report()
 
