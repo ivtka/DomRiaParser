@@ -1,16 +1,16 @@
 import time
-import constants as const
 import os
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.common.by import By
-from prettytable import PrettyTable
 
 from realty import Realty
 
+import config
+
 
 class DomRia(webdriver.Chrome):
-    def __init__(self, driver_path=r"/home/ivtkac/Developments/python/chromedriver"):
+    def __init__(self, driver_path=config.DRIVER_PATH):
         self.driver_path = driver_path
         os.environ['PATH'] += self.driver_path
         super(DomRia, self).__init__()
@@ -19,7 +19,7 @@ class DomRia(webdriver.Chrome):
         return super().__exit__(*args)
 
     def load_page(self):
-        self.get(const.BASE_URL)
+        self.get(config.DOMRIA_URL)
 
     def select_city(self, city: str) -> None:
         city_element = self.find_element_by_css_selector(
@@ -57,7 +57,4 @@ class DomRia(webdriver.Chrome):
         realty_boxes = self.find_element(By.ID, 'domSearchPanel')
 
         realties = Realty(realty_boxes)
-        table = PrettyTable(
-            field_names=["Realty Location", "Realty Price", "URL"])
-        table.add_rows(realties.pull_realties())
-        print(table)
+        return realties.pull_realties()

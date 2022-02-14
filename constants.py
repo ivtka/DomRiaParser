@@ -1,1 +1,0 @@
-BASE_URL = "https://dom.ria.com/uk/prodazha-kvartir"

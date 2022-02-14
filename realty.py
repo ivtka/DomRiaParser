@@ -2,6 +2,9 @@ from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.common.by import By
 
 
+import config
+
+
 class Realty:
     def __init__(self, boxes_section_element: WebElement):
         self.boxes_section_element = boxes_section_element
@@ -19,7 +22,7 @@ class Realty:
             realty_price = realty_boxe.find_element(By.CSS_SELECTOR,
                                                     'b.size18'
                                                     ).get_attribute('innerHTML').strip()
-            realty_link = "https://dom.ria.com/" + realty.get_attribute('href')
+            realty_link = config.BASE_URL + realty.get_attribute('href')
 
             collection.append([realty_location, realty_price, realty_link])
 
