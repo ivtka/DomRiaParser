@@ -1,12 +1,13 @@
 from typing import Any, Dict
 import config
+import os
 from telebot import TeleBot
 from telebot.types import ReplyKeyboardMarkup
 
 from domria import DomRia, UserData
 
 bot = TeleBot(config.TOKEN)
-parser = DomRia()
+parser = DomRia(os.environ.get('CHROMEDRIVER_PATH'))
 
 user_dict: Dict[Any, UserData] = {}
 
