@@ -26,7 +26,7 @@ class DomRia(webdriver.Chrome):
         self.options.add_argument("--no-sandbox")
         self.options.add_argument("--disable-dev-shm-usage")
         os.environ['PATH'] += self.driver_path
-        super(DomRia, self).__init__()
+        super(DomRia, self).__init__(chrome_options=self.options)
 
     def __exit__(self, *args) -> None:
         return super().__exit__(*args)
