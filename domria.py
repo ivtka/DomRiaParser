@@ -18,10 +18,15 @@ class UserData:
         self.end_price = None
 
 class DomRia(webdriver.Chrome):
-    def __init__(self, driver_path):
+    def __init__(self, driver_path=config.CHROMEDRIVER_PATH):
         self.driver_path = driver_path
+        self.options = webdriver.ChromeOptions()
+        self.options.binary_location = config.GOOGLE_CHROME_BIN
+        self.options.add_argument("--headless")
+        self.options.add_argument("--no-sandbox")
+        self.options.add_argument("--disable-dev-shm-usage")
         os.environ['PATH'] += self.driver_path
-        super(DomRia, self).__init__()
+        super(DomRia, self).__init__(chrome_options=self.options)
 
     def __exit__(self, *args) -> None:
         return super().__exit__(*args)
