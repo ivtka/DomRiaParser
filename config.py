@@ -1,4 +1,6 @@
 DOMRIA_URL = "https://dom.ria.com/uk/prodazha-kvartir"
 BASE_URL = "https://dom.ria.com/"
-TOKEN = "2097213496:AAG3dxmb7_cO0FcXE2HY0b1tQ9-wUB7mm3M"
+TOKEN = "5127659598:AAEYYIMkMJWQXgIEbJmJnb9_mgrdgNvVHqA"
 DRIVER_PATH = "./chromedriver"
+CITIES = {'Чернівці': ['Квартал Вілл', 'Ніжин', 'Першотравневий',
+                       'Садгорський', 'Шевченківський'], 'Івано-Франківськ': ['Івасюка Надрічна', 'Арсенал', 'Бам']}
