@@ -7,7 +7,7 @@ from telebot.types import ReplyKeyboardMarkup
 from domria import DomRia, UserData
 
 bot = TeleBot(config.TOKEN)
-parser = DomRia(os.environ.get('CHROMEDRIVER_PATH'))
+parser = DomRia()
 
 user_dict: Dict[Any, UserData] = {}
 
