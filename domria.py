@@ -21,6 +21,13 @@ class UserData:
 class DomRia(webdriver.Chrome):
     def __init__(self, driver_path=config.CHROMEDRIVER_PATH):
         self.driver_path = driver_path
+        self.options = webdriver.ChromeOptions()
+        self.options.add_argument('--lang=uk')
+        self.options.add_argument('--disable-gpu')
+        self.options.add_argument('--no-sandbox')
+        self.options.add_argument('--start-maximized')
+        self.options.add_argument('--window-size=1920x1080')
+        self.options.headless = True
         os.environ['PATH'] += self.driver_path
         super(DomRia, self).__init__(chrome_options=self.options)
 
@@ -33,6 +40,7 @@ class DomRia(webdriver.Chrome):
     def select_city(self, city: str) -> None:
         city_element = self.find_element_by_css_selector(
             'input[placeholder="Введіть місто"]')
+        print(city_element.get_attribute("value"))
         city_element.click()
         city_element.send_keys(city)
         city_element.send_keys(Keys.RETURN)
@@ -43,7 +51,7 @@ class DomRia(webdriver.Chrome):
             'input#autocomplete-1')
         search_field.click()
         selected_state_element = self.find_element_by_xpath(
-            f'//label[text()="{state}"]')
+             f'//label[text()="{state}"]')
         selected_state_element.click()
         time.sleep(3)
 
