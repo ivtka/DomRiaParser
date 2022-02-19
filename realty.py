@@ -1,7 +1,6 @@
 from selenium.webdriver.remote.webelement import WebElement
 from selenium.webdriver.common.by import By
 
-
 import config
 
 
@@ -11,17 +10,19 @@ class Realty:
         self.realty_boxes = self.pull_realty_boxes()
 
     def pull_realty_boxes(self):
-        return self.boxes_section_element.find_elements(By.CLASS_NAME, 'realty-item')
+        return self.boxes_section_element.find_elements(By.CLASS_NAME,
+                                                        'realty-item')
 
     def pull_realties(self):
         collection = []
         for realty_boxe in self.realty_boxes:
             realty = realty_boxe.find_element(
-                By.CLASS_NAME, 'realty-link')
+                By.TAG_NAME, 'a')
             realty_location = realty.get_attribute('title')
             realty_price = realty_boxe.find_element(By.CSS_SELECTOR,
                                                     'b.size18'
-                                                    ).get_attribute('innerHTML').strip()
+                                                    ).get_attribute(
+                'innerHTML').strip()
             realty_link = config.BASE_URL + realty.get_attribute('href')
 
             collection.append([realty_location, realty_price, realty_link])
