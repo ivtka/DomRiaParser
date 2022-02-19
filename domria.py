@@ -22,7 +22,7 @@ class DomRia(webdriver.Chrome):
     def __init__(self, driver_path=config.CHROMEDRIVER_PATH):
         self.driver_path = driver_path
         os.environ['PATH'] += self.driver_path
-        super(DomRia, self).__init__()
+        super(DomRia, self).__init__(chrome_options=self.options)
 
     def __exit__(self, *args) -> None:
         return super().__exit__(*args)

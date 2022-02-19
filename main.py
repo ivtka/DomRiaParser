@@ -1,5 +1,6 @@
 from typing import Any, Dict
 import config
+import os
 from telebot import TeleBot
 from telebot.types import ReplyKeyboardMarkup
 
@@ -75,8 +76,9 @@ def process_prices_step(message):
         print(e)
         bot.reply_to(message, "За вашим запитом нічого не знайдено. Натисність /start або /help, щоб перезапустити")
 
-bot.enable_save_next_step_handlers(delay=2)
+if __name__ == "__main__":
+    bot.enable_save_next_step_handlers(delay=2)
 
-bot.load_next_step_handlers()
+    bot.load_next_step_handlers()
 
-bot.infinity_polling()
+    bot.infinity_polling()
