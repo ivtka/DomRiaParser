@@ -24,7 +24,7 @@ class Realty:
                                                     'b.size18'
                                                     ).get_attribute(
                 'innerHTML').strip()
-            realty_link = config.BASE_URL + realty.get_attribute('href')
+            realty_link = realty.get_attribute('href')
 
             collection.append([realty_location, realty_price, realty_link])
 
