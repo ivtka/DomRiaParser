@@ -17,8 +17,9 @@ class Realty:
         collection = []
         for realty_boxe in self.realty_boxes:
             realty = realty_boxe.find_element(
-                By.CSS_SELECTOR, 'a.size22')
+                By.TAG_NAME, 'a')
             realty_location = realty.get_attribute('title')
+            print(realty_location)
             realty_price = realty_boxe.find_element(By.CSS_SELECTOR,
                                                     'b.size18'
                                                     ).get_attribute(
